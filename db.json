@@ -1,0 +1,18 @@
+{
+        "user": {
+            "email": "user1@gmail.com",
+            "login": "",
+            "password": "",
+            "name": "",
+            "weight_current": "",
+            "height_current": "",
+            "age": "",
+            "sex": "",
+            "weight_total": {
+                "weight_1": {
+                  "weight": "",
+                  "data": ""
+                }
+            }
+        }
+    }
