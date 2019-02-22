@@ -22,7 +22,7 @@ $(document).ready(function() {
   var btnLogin = document.getElementById('btnLogIn');
   var btnSignUp = document.getElementById('btnSignUp');
   var btnLogOut = document.getElementById('btnLogOut');
-  var userId = '';
+  var userId;
 
   // Add login event
   btnLogin.addEventListener('click', e => {
@@ -35,6 +35,18 @@ $(document).ready(function() {
 
  });
 
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+      console.log(firebaseUser);
+      btnLogOut.classList.remove('hide');
+      userId = firebaseUser.uid;  
+    } else {
+      console.log('not logged in');
+      btnLogOut.classList.add('hide');
+    }
+  });
+
+
   // Sign Up event
 
   btnSignUp.addEventListener('click', e => {
@@ -45,37 +57,23 @@ $(document).ready(function() {
     const promise = auth.createUserWithEmailAndPassword(email, password);
     promise
     .then(user => console.log(user))
-    .catch(e => console.log(e.message));
-
-    saveUser(email, password);
+    .catch(e => console.log(e.message));   
     
+    // function save user to db
+    firebase.database().ref('/users/' + userId).push({ email: email, password: password, id: userId});
+
   });
 
   // Sign Out
 
   btnLogOut.addEventListener('click', e => {
+    e.preventDefault();
     firebase.auth().signOut();
+    userId = '';
+    console.log(userId)
   });
 
-
-  firebase.auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
-      btnLogOut.classList.remove('hide')
-      console.log(firebaseUser);
-      console.log(firebaseUser.uid);
-      userId = firebaseUser.uid;
-    } else {
-      console.log('not logged in');
-      btnLogOut.classList.add('hide')
-    }
-  });
-
-  // Add user to Database
-
-  function saveUser(email, password, userId) {
-    firebase.database().ref('/users/' + userId).push({ email: email, password: password, id: userId});
-  }
-
+  
 });
 
 
