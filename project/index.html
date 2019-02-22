@@ -25,6 +25,7 @@
 	<meta property="og:type" content="" />	
 	<meta property="og:url" content="" />
 	<meta property="og:image" content="" />
+	<meta name="google-signin-client_id" content="64244034820-qibkff5lr9s1tcpbamr8kopk2c9rqfbe.apps.googleusercontent.com">
 	<!-- css -->
 	<link rel="stylesheet" href="css/main.css">
 
@@ -37,14 +38,18 @@
 		<form action="#" method="get" id="contactForm">
 			<input type="text" name="email" id="email" placeholder="Email">
 			<input type="text" name="password" id="password" placeholder="Password">
-
+			<div class="g-signin2" data-onsuccess="onSignIn"></div>
 			<button type="submit" id="btnLogIn">Войти</button>
 			<button type="submit" id="btnSignUp">Зарегистрироваться</button>
 			<button type="submit" id="btnLogOut" class="hide">Выйти</button>
 		</form>
+		<a href="#" onclick="signOut();">Sign out</a>
+
+		<p id="get-input"></p>
 	</div>
 
 		
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>

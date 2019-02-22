@@ -22,6 +22,7 @@ $(document).ready(function() {
   var btnLogin = document.getElementById('btnLogIn');
   var btnSignUp = document.getElementById('btnSignUp');
   var btnLogOut = document.getElementById('btnLogOut');
+  var getEmail = document.getElementById('get-input');
   var userId;
 
   // Add login event
@@ -33,16 +34,24 @@ $(document).ready(function() {
     const promise = auth.signInWithEmailAndPassword(email, password);
     promise.catch(e => console.log(e.message));
 
+
   });
 
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
       console.log(firebaseUser);
       btnLogOut.classList.remove('hide');
+      btnLogIn.classList.add('hide');
+      btnSignUp.classList.add('hide');
       userId = firebaseUser.uid;  
+      console.log(firebaseUser.email, firebaseUser.uid, firebaseUser.password);
+      // Получаем email user'a и пишем в p
+      getEmail.innerHTML = firebaseUser.email;
     } else {
       console.log('not logged in');
       btnLogOut.classList.add('hide');
+      btnLogIn.classList.remove('hide');
+      btnSignUp.classList.remove('hide');      
     }
   });
 
@@ -62,7 +71,11 @@ $(document).ready(function() {
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
           userId = firebaseUser.uid;
-          firebase.database().ref('/users/' + userId).set({ email: email, password: password, id: userId});
+          firebase.database().ref('/users/' + userId).set({
+            email: email,
+            password: password,
+            id: userId
+          });
         }      
     });
 
@@ -73,8 +86,36 @@ $(document).ready(function() {
     e.preventDefault();
     firebase.auth().signOut();
     userId = '';
-    console.log(userId)
+    getEmail.innerHTML = '';
+    console.log(userId);
   });
+
+
+  // Вывод данных всех пользователей.
+  userDB.on("value", function(snapshot) {
+    console.log(snapshot.val());
+  }, function (error) {
+    console.log("Error: " + error.code);
+  });
+
+
+  // google enter
+  
+  // function onSignIn(googleUser) {
+  //   var profile = googleUser.getBasicProfile();
+  //   console.log('ID: ' + profile.getId()); 
+  //   console.log('Name: ' + profile.getName());
+  //   console.log('Image URL: ' + profile.getImageUrl());
+  //   console.log('Email: ' + profile.getEmail()); 
+  // }
+
+  // function signOut() {
+  //   var auth2 = gapi.auth2.getAuthInstance();
+  //   auth2.signOut().then(function () {
+  //     console.log('User signed out.');
+  //   });
+  // }
+  
 
   
 });
