@@ -33,7 +33,7 @@ $(document).ready(function() {
     const promise = auth.signInWithEmailAndPassword(email, password);
     promise.catch(e => console.log(e.message));
 
- });
+  });
 
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
@@ -48,7 +48,6 @@ $(document).ready(function() {
 
 
   // Sign Up event
-
   btnSignUp.addEventListener('click', e => {
     e.preventDefault();
     let email = txtEmail.value;
@@ -57,15 +56,19 @@ $(document).ready(function() {
     const promise = auth.createUserWithEmailAndPassword(email, password);
     promise
     .then(user => console.log(user))
-    .catch(e => console.log(e.message));   
+    .catch(e => console.log(e.message));  
     
-    // function save user to db
-    firebase.database().ref('/users/' + userId).push({ email: email, password: password, id: userId});
+    
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+          userId = firebaseUser.uid;
+          firebase.database().ref('/users/' + userId).set({ email: email, password: password, id: userId});
+        }      
+    });
 
   });
 
   // Sign Out
-
   btnLogOut.addEventListener('click', e => {
     e.preventDefault();
     firebase.auth().signOut();
