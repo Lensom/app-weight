@@ -1,20 +1,29 @@
-<h1>Template for website development</h1>
-<h2>Start template:</h2>
+# height
 
-<ul>
-    <li>npm i</li>
-    <li>ncu -u - for update your template</li>
-    <li>gulp</li>
-</ul>
+## Project setup
+```
+npm install
+```
 
-<hr>  
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-<h1>Стартовый шаблон для верстки веб-сайтов</h1>
-<h2>Запуск шаблона:</h2>
-<ul>
-    <li>npm i</li>
-    <li>ncu -u - for update your template</li>
-    <li>gulp</li>
-</ul>
+### Compiles and minifies for production
+```
+npm run build
+```
 
+### Run your tests
+```
+npm run test
+```
 
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,3 +1,23 @@
+<template>
+    <form action="#" method="get" id="contactForm">
+		<input type="text" name="email" id="email" placeholder="Email">
+		<input type="text" name="password" id="password" placeholder="Password">
+		<div class="g-signin2" data-onsuccess="onSignIn"></div>
+		<button type="submit" id="btnLogIn">Войти</button>
+		<button type="submit" id="btnSignUp">Зарегистрироваться</button>
+		<button type="submit" id="btnLogOut" class="hide">Выйти</button>
+	</form>  
+</template>
+
+
+<script>
+export default {
+  name: 'Form',
+  props: {
+    
+  }
+}
+
 $(document).ready(function() {
    
   // Initialize Firebase
@@ -121,3 +141,5 @@ $(document).ready(function() {
 });
 
 
+
+</script>
