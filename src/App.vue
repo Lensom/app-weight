@@ -4,15 +4,15 @@
 
     <nav>
       <ul>
-        <li>
-        <router-link to="/">Welcome</router-link>
-        </li>
-        <li>
-        <router-link :to="'/main'">MainPage</router-link>
-        </li>
-        <li>
-        <router-link :to="'/settings'">Settings</router-link>
-        </li>
+        <router-link tag="li" class="" exact to="/" active-class="active">
+          <a>Welcome</a>
+        </router-link>
+        <router-link tag="li" class="" to="/main" active-class="active">
+          <a>MainPage</a>
+        </router-link>
+        <router-link tag="li" class="" to="/settings" active-class="active">
+          <a>Settings</a>
+        </router-link>
       </ul>
     </nav>
    <router-view></router-view>
@@ -91,6 +91,10 @@ ul {
 ul li {
   display: inline-block;
   padding: 0 10px;
+}
+
+.active a {
+  color: orange;
 }
 
 </style>
