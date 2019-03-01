@@ -1,19 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/img/logo.png">
-    <MainPage></MainPage>
+
+
+    <nav>
+      <ul>
+        <li>
+        <router-link to="/">Welcome</router-link>
+        </li>
+        <li>
+        <router-link :to="'/main'">MainPage</router-link>
+        </li>
+        <li>
+        <router-link :to="'/settings'">Settings</router-link>
+        </li>
+      </ul>
+    </nav>
+   <router-view></router-view>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import MainPage from './components/MainPage.vue'
 
 export default {
   name: 'app',
   components: {
-    // HelloWorld,
-    MainPage
   }
 }
 </script>
@@ -72,6 +82,15 @@ img {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+  padding: 0 10px;
 }
 
 </style>
