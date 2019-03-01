@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router'
-import Welcome from './pages/Welcome'
-import MainPage from './pages/MainPage'
-import Settings from './pages/Settings'
+import Welcome from '../pages/Welcome'
+import MainPage from '../pages/MainPage'
+import Settings from '../pages/Settings'
 
 
 export default new VueRouter({

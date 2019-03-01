@@ -1,12 +1,31 @@
 <template>
-    <form action="#" method="get" id="contactForm">
-		<input type="text" name="email" id="email" placeholder="Email">
-		<input type="text" name="password" id="password" placeholder="Password">
-		<div class="g-signin2" data-onsuccess="onSignIn"></div>
-		<button type="submit" id="btnLogIn">Войти</button>
-		<button type="submit" id="btnSignUp">Зарегистрироваться</button>
-		<button type="submit" id="btnLogOut" class="hide">Выйти</button>
-	</form>  
+  <v-app>
+  <v-content>
+    <v-container fluid fill-height>
+      <v-layout align-center justify-center>
+        <v-flex xs12 sm8 md4>          
+          <v-card class="elevation-12">
+            <v-toolbar dark color="primary">
+              <v-toolbar-title>Форма входа</v-toolbar-title>
+            </v-toolbar>
+            <v-card-text>
+              <v-form method="get" id="contactForm">
+                <v-text-field id="email" prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
+                <v-text-field id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn color="primary" id="btnSignUp">Зарегистрироваться</v-btn>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" id="btnLogIn">Войти</v-btn>
+              <v-btn color="primary" id="btnLogOut">Выйти</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-content>
+  </v-app>
 </template>
 
 
@@ -42,7 +61,6 @@ $(document).ready(function() {
   var btnLogin = document.getElementById('btnLogIn');
   var btnSignUp = document.getElementById('btnSignUp');
   var btnLogOut = document.getElementById('btnLogOut');
-  var getEmail = document.getElementById('get-input');
   var userId;
 
   // Add login event
@@ -54,7 +72,6 @@ $(document).ready(function() {
     const promise = auth.signInWithEmailAndPassword(email, password);
     promise.catch(e => console.log(e.message));
 
-
   });
 
   firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -65,8 +82,7 @@ $(document).ready(function() {
       btnSignUp.classList.add('hide');
       userId = firebaseUser.uid;  
       console.log(firebaseUser.email, firebaseUser.uid, firebaseUser.password);
-      // Получаем email user'a и пишем в p
-      getEmail.innerHTML = firebaseUser.email;
+
     } else {
       console.log('not logged in');
       btnLogOut.classList.add('hide');
@@ -118,26 +134,9 @@ $(document).ready(function() {
     console.log("Error: " + error.code);
   });
 
-
-  // google enter
   
-  // function onSignIn(googleUser) {
-  //   var profile = googleUser.getBasicProfile();
-  //   console.log('ID: ' + profile.getId()); 
-  //   console.log('Name: ' + profile.getName());
-  //   console.log('Image URL: ' + profile.getImageUrl());
-  //   console.log('Email: ' + profile.getEmail()); 
-  // }
-
-  // function signOut() {
-  //   var auth2 = gapi.auth2.getAuthInstance();
-  //   auth2.signOut().then(function () {
-  //     console.log('User signed out.');
-  //   });
-  // }
-  
-
   
 });
 
 </script>
+

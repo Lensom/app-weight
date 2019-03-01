@@ -1,24 +1,8 @@
 <template>
-  <div id="app">
-
-
-    <nav>
-      <ul>
-        <router-link tag="li" class="" exact to="/" active-class="active">
-          <a>Welcome</a>
-        </router-link>
-        <router-link tag="li" class="" to="/main" active-class="active">
-          <a>MainPage</a>
-        </router-link>
-        <router-link tag="li" class="" to="/settings" active-class="active">
-          <a>Settings</a>
-        </router-link>
-      </ul>
-    </nav>
-   <router-view></router-view>
+  <div id="app">  
+    <router-view></router-view>
   </div>
 </template>
-
 <script>
 
 export default {
@@ -75,15 +59,6 @@ img {
   display: none;
 }
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
 ul {
   list-style-type: none;
 }
@@ -91,10 +66,6 @@ ul {
 ul li {
   display: inline-block;
   padding: 0 10px;
-}
-
-.active a {
-  color: orange;
 }
 
 </style>

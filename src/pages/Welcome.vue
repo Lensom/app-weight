@@ -1,10 +1,8 @@
 <template>
 
 <div class="contact">
+  <Menu></Menu>
 	<Form></Form>
-	<!-- <a href="#" onclick="signOut();">Sign out</a> Google sign out -->
-
-	<p id="get-input"></p>
 </div>
 
 </template>
@@ -12,11 +10,13 @@
 <script>
 
 import Form from '../components/Form.vue'
+import Menu from '../components/Menu.vue'
 
 export default {
   name: 'Welcome',
   components: {
-    Form
+    Form,
+    Menu
   }
 }
 </script>
