@@ -13,6 +13,7 @@
         <v-icon left>{{ item.icon }}</v-icon>
         <a class="v-link">{{ item.title }}</a>
       </router-link>
+      <a class="v-link" id="btnLogOut">Exit</a>
     </ul>
   </nav>
 
@@ -26,7 +27,8 @@ export default {
       items: [
         { title: 'Welcome', icon: 'dashboard', url: '/' },
         { title: 'MainPage', icon: 'home', url: '/main' },
-        { title: 'Settings', icon: 'settings', url: '/settings' }
+        { title: 'Settings', icon: 'settings', url: '/settings' },
+        { title: 'Exit', icon: 'exit_to_app', url: '/'}
       ],
       right: null
     }
