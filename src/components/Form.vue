@@ -140,10 +140,12 @@ export default {
           }      
       });
     },
-    LogOut(e) {
+    LogOut() {
+      // return this.$store.actions.LogOut
       firebase.auth().signOut();
       userId = '';
       console.log(userId);
+    //   window.location.href = "/";
     }
   }
 }

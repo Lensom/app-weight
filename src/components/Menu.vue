@@ -13,25 +13,29 @@
         <v-icon left>{{ item.icon }}</v-icon>
         <a class="v-link">{{ item.title }}</a>
       </router-link>
-      <a class="v-link" id="btnLogOut">Exit</a>
+      <a class="v-link">Exit</a>
+      <!-- <a class="v-link" @click="LogOut">Exit</a> -->
     </ul>
   </nav>
 
 </template>
 
 <script>
+
 export default {
   name: 'Menu',
-  data () {
-    return {
-      items: [
-        { title: 'Welcome', icon: 'dashboard', url: '/' },
-        { title: 'MainPage', icon: 'home', url: '/main' },
-        { title: 'Settings', icon: 'settings', url: '/settings' },
-        { title: 'Exit', icon: 'exit_to_app', url: '/'}
-      ],
-      right: null
+  computed: {
+    items () {
+      return this.$store.getters.items
     }
+  },
+  methods: {
+    // LogOut(e) {
+    //   firebase.auth().signOut();
+    //   userId = '';
+    //   console.log(userId);
+    //   window.location.href = "/";
+    // }
   }
 }
 </script>
