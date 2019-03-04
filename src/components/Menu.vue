@@ -1,14 +1,17 @@
 <template>
   <nav>
     <ul>
-      <router-link tag="li" class="" exact to="/" active-class="active">
-        <a>Welcome</a>
-      </router-link>
-      <router-link tag="li" class="" to="/main" active-class="active">
-        <a>MainPage</a>
-      </router-link>
-      <router-link tag="li" class="" to="/settings" active-class="active">
-        <a>Settings</a>
+      <router-link 
+        v-for="item in items"
+        :key="item.title"
+        @click=""
+        tag="li"
+        class=""
+        v-bind:to="item.url"
+        active-class="active"
+        exact>
+        <v-icon left>{{ item.icon }}</v-icon>
+        <a class="v-link">{{ item.title }}</a>
       </router-link>
     </ul>
   </nav>
@@ -17,6 +20,26 @@
 
 <script>
 export default {
-  name: 'Menu'
+  name: 'Menu',
+  data () {
+    return {
+      items: [
+        { title: 'Welcome', icon: 'dashboard', url: '/' },
+        { title: 'MainPage', icon: 'home', url: '/main' },
+        { title: 'Settings', icon: 'settings', url: '/settings' }
+      ],
+      right: null
+    }
+  }
 }
 </script>
+
+<style scoped>
+  ul {
+    list-style-type: none;
+  }
+  .v-link {
+    text-decoration: none;
+  }
+
+</style>

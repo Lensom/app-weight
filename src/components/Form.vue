@@ -9,15 +9,32 @@
               <v-toolbar-title>Форма входа</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
-              <v-form method="get" id="contactForm">
-                <v-text-field id="email" prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
-                <v-text-field id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+              <v-form v-model="valid" ref="form" method="get" id="contactForm" validation>
+                <v-text-field
+                  id="email"
+                  prepend-icon="person"
+                  name="email"
+                  label="E-mail"
+                  type="email"
+                  v-model="email"
+                  :rules="emailRules">
+                </v-text-field>
+                <v-text-field
+                  id="password"
+                  prepend-icon="lock"
+                  name="password"
+                  label="Пароль"
+                  type="password"
+                  :counter="16"
+                  v-model="password"
+                  :rules="passwordRules">
+                </v-text-field>
               </v-form>
             </v-card-text>
             <v-card-actions>
               <v-btn color="primary" id="btnSignUp">Зарегистрироваться</v-btn>
               <v-spacer></v-spacer>
-              <v-btn color="primary" id="btnLogIn">Войти</v-btn>
+              <v-btn color="primary" id="btnLogIn" @click="onSubmit" :disabled="!valid">Войти</v-btn>
               <v-btn color="primary" id="btnLogOut">Выйти</v-btn>
             </v-card-actions>
           </v-card>
@@ -30,10 +47,37 @@
 
 
 <script>
+
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
 export default {
   name: 'Form',
-  props: {
-    
+  data () {
+    return {
+      email: '',
+      password: '',
+      valid: false,
+      emailRules: [
+        (v) => !!v || 'E-mail обязательное поле',
+        (v) => emailRegex.test(v) || 'E-mail должен быть заполнен'
+      ],
+      passwordRules: [
+        (v) => !!v || 'Пароль обязательное поле',
+        (v) => v && v.length >= 6 || 'Пароль должен содержать не менее 6 символов'
+      ],
+    }
+  },
+  methods: {
+    onSubmit() {
+      if (this.$refs.form.validate()) {
+        const user = {
+          email: this.email,
+          password: this.password
+        }
+
+        console.log(user)
+      }
+    }
   }
 }
 

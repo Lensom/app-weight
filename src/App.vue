@@ -59,13 +59,4 @@ img {
   display: none;
 }
 
-ul {
-  list-style-type: none;
-}
-
-ul li {
-  display: inline-block;
-  padding: 0 10px;
-}
-
 </style>

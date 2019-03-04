@@ -5,6 +5,7 @@
         <Menu></Menu>
       </v-navigation-drawer>
       <v-content>
+        <h1>Main page</h1>  
         <router-view></router-view>
       </v-content>
     </v-app>
@@ -21,7 +22,7 @@ export default {
     Menu
   },
   data: () => ({
-    drawer: false
+    drawer: true
   })
 
 }
