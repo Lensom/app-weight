@@ -17,3 +17,14 @@ new Vue({
 
 
 
+// Tasks
+
+// 1. Cookies login n password
+// 2. Methods to Vuex
+// 3. Modal windows
+// 4. Close button for drawer
+// 5. Adaptive drawer
+// 6. Design
+// 7. Graph
+
+
