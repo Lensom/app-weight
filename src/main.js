@@ -28,3 +28,9 @@ new Vue({
 // 7. Graph
 
 
+// methods - mutations
+// async methods (axios, Запрос на сервер) - actions
+// data - state
+// computed - getters
+
+

@@ -2,15 +2,13 @@ export default {
   state: {
     userId: ''
   },
-  mutations: {    
+  mutations: {  
+    LogOut: state => {
+      firebase.auth().signOut();
+      state.userId = '';
+    }      
   },
-  actions: {  
-    // LogOut(state) {
-    //   firebase.auth().signOut();
-    //   state.userId = '';
-    //   console.log(userId);
-    //   window.location.href = "/";
-    // }  
+  actions: {      
   },
   getters: {
     user (state) {

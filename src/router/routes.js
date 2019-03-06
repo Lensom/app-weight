@@ -19,5 +19,6 @@ export default new VueRouter({
       component: Settings
     }
   ],
-  mode: 'history'
+  mode: 'history',
+  name: 'router'
 });

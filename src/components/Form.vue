@@ -9,7 +9,7 @@
               <v-toolbar-title>Форма входа</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
-              <v-form v-model="valid" ref="form" method="get" id="contactForm" lazy-validation>
+              <v-form v-model="valid" ref="form" method="get" id="contactForm" validation>
                 <v-text-field
                   id="email"
                   prepend-icon="person"
@@ -48,6 +48,7 @@
 
 <script>
 
+
 // Values
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const config = {
@@ -73,7 +74,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
       btnSignUp.classList.add('hide');
       userId = firebaseUser.uid;  
       console.log(firebaseUser.email, firebaseUser.uid, firebaseUser.password);
-      // window.location.href = "/main";
+      router.push('main')
 
     } else {
       console.log('not logged in');
@@ -107,20 +108,12 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
-      if (this.$refs.form.validate()) {
-        const user = {
-          email: this.email,
-          password: this.password
-        }
-        // this.$router.push("/main");        
-      }
-    },
     Login(e) {
       console.log(email.value)
       console.log(password.value)
       const promise = auth.signInWithEmailAndPassword(email.value, password.value);
       promise.catch(e => console.log(e.message));
+      
     },
     signUp(e) {
       const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
@@ -140,12 +133,8 @@ export default {
           }      
       });
     },
-    LogOut() {
-      // return this.$store.actions.LogOut
-      firebase.auth().signOut();
-      userId = '';
-      console.log(userId);
-    //   window.location.href = "/";
+    LogOut: function() {
+      this.$store.commit('LogOut');
     }
   }
 }

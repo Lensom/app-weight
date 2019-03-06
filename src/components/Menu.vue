@@ -30,12 +30,9 @@ export default {
     }
   },
   methods: {
-    // LogOut(e) {
-    //   firebase.auth().signOut();
-    //   userId = '';
-    //   console.log(userId);
-    //   window.location.href = "/";
-    // }
+    LogOut: function() {
+      this.$store.commit('LogOut');
+    }
   }
 }
 </script>
