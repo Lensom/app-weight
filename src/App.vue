@@ -44,7 +44,8 @@ body {
   min-width: 320px;
   position: relative;
   line-height: 1.65;
-  font-family: "RobotoBold", sans-serif;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
   overflow-x: hidden;
   margin: 0;
 }

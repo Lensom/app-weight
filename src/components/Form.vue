@@ -33,10 +33,10 @@
               <!-- <v-btn class="btn btn-signup" id="btnSignUp" @click.stop.prevent="signUp">Зарегистрироваться</v-btn> -->
               <!-- <v-spacer></v-spacer> -->
               <v-btn class="btn btn-login" id="btnLogIn"  @click.stop.prevent="Login" :disabled="!valid">Войти</v-btn>
-              <v-btn class="btn btn-logout" id="btnLogOut" @click="LogOut">Выйти</v-btn>
+              <v-btn class="btn btn-logout hide" id="btnLogOut" @click="LogOut">Выйти</v-btn>
             </v-card-actions>
-          </v-card>
-        </v-flex>
+          </v-card>          
+        </v-flex> 
       </v-layout>
     </v-container>
   </v-content>
@@ -69,16 +69,16 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
       console.log(firebaseUser);
       btnLogOut.classList.remove('hide');
       btnLogIn.classList.add('hide');
-      btnSignUp.classList.add('hide');
+      // btnSignUp.classList.add('hide');
       userId = firebaseUser.uid;  
       console.log(firebaseUser.email, firebaseUser.uid, firebaseUser.password);
-      router.push('main')
+      // router.push('main') router is not found
 
     } else {
       console.log('not logged in');
       btnLogOut.classList.add('hide');
       btnLogIn.classList.remove('hide');
-      btnSignUp.classList.remove('hide');      
+      // btnSignUp.classList.remove('hide');      
     }
   });
 
@@ -145,7 +145,7 @@ export default {
   width: 40%;
   margin: 0 auto;
   margin-top: -50px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .contactform .primary--text {
