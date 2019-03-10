@@ -4,12 +4,10 @@
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
         <v-flex xs12 sm8 md4>          
-          <v-card class="elevation-12">
-            <v-toolbar dark color="primary">
-              <v-toolbar-title>Форма входа</v-toolbar-title>
-            </v-toolbar>
+          <img class="logotype" src="../assets/img/logotype3.png" alt="Nasti">
+          <v-card>
             <v-card-text>
-              <v-form v-model="valid" ref="form" method="get" id="contactForm" validation>
+              <v-form v-model="valid" autocomplete="off" ref="form" method="get" id="contactForm" class="contactform" validation>
                 <v-text-field
                   id="email"
                   prepend-icon="person"
@@ -32,10 +30,10 @@
               </v-form>
             </v-card-text>
             <v-card-actions>
-              <v-btn color="primary" id="btnSignUp" @click.stop.prevent="signUp">Зарегистрироваться</v-btn>
-              <v-spacer></v-spacer>
-              <v-btn color="primary" id="btnLogIn"  @click.stop.prevent="Login" :disabled="!valid">Войти</v-btn>
-              <v-btn color="primary" id="btnLogOut" @click="LogOut">Выйти</v-btn>
+              <!-- <v-btn class="btn btn-signup" id="btnSignUp" @click.stop.prevent="signUp">Зарегистрироваться</v-btn> -->
+              <!-- <v-spacer></v-spacer> -->
+              <v-btn class="btn btn-login" id="btnLogIn"  @click.stop.prevent="Login" :disabled="!valid">Войти</v-btn>
+              <v-btn class="btn btn-logout" id="btnLogOut" @click="LogOut">Выйти</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -140,3 +138,70 @@ export default {
 }
 
 </script>
+
+<style>
+
+.logotype {
+  width: 40%;
+  margin: 0 auto;
+  margin-top: -50px;
+  margin-bottom: 20px;
+}
+
+.contactform .primary--text {
+  color: #ee9ca7 !important;
+  caret-color: #ee9ca7 !important;
+}
+
+.v-card {
+  box-shadow: none;
+}
+
+.theme--light.v-counter {
+  color: #fff;
+}
+
+.theme--light.v-sheet {
+  background: transparent;
+}
+
+.theme--light.v-icon {
+  color: #fff;
+}
+
+.theme--light.v-input:not(.v-input--is-disabled) input,
+.theme--light.v-input:not(.v-input--is-disabled) textarea {
+  color: #fff;
+}
+
+.theme--light.v-label {
+  color: #fff;
+}
+
+.theme--light.v-text-field > .v-input__control > .v-input__slot:before {
+  border-color: #fff;
+}
+
+.v-btn__content {
+  color: #fff;
+}
+
+.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
+  background-color: #370286;
+}
+
+.btn {
+  background-color: #3a1c71;
+  background-color: #fff;
+  /* background-image: linear-gradient(220deg, #3a1c71 0%, #753a88  100%); */
+  color: #fff;
+}
+
+
+.v-card__actions .btn.btn-logout, 
+.v-card__actions .btn.btn-signup,
+.v-card__actions .btn.btn-login {
+  margin: 0 auto;
+}
+
+</style>

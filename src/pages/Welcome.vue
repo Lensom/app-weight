@@ -1,6 +1,6 @@
 <template>
 
-<div class="contact">
+<div class="contact">  
 	<Form></Form>
 </div>
 
@@ -19,3 +19,10 @@ export default {
   }
 }
 </script>
+
+<style>
+#app {
+  background-image: url(../assets/img/plain-wallpaper-hd.jpg)
+}
+
+</style>
